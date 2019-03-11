@@ -1,0 +1,53 @@
+# For full config options, check the docs:
+#    docs.serverless.com
+
+service: members-service # NOTE: update this with your service name
+
+provider:
+  name: aws
+  runtime: dotnetcore2.1
+
+package:
+  #individually: true
+  artifact: bin/release/netcoreapp2.1/deploy-package.zip
+
+functions:
+  createMember:
+    handler: ServerlessAssembly::ServerlessFunctions.CreateMemberFunction::Handle
+    events:
+      - http:
+          path: members
+          method: post
+          cors: true
+
+  getMember:
+    handler: ServerlessAssembly::ServerlessFunctions.GetMemberFunction::Handle
+    events:
+      - http:
+          path: members/{id}
+          method: get
+          cors: true  
+
+  getMembers:
+    handler: ServerlessAssembly::ServerlessFunctions.GetMembersFunction::Handle
+    events:
+      - http:
+          path: members
+          method: get
+          cors: true          
+
+  updateMember:
+    handler: ServerlessAssembly::ServerlessFunctions.UpdateMemberFunction::Handle
+    events:
+      - http:
+          path: members
+          method: put
+          cors: true
+
+  deleteMember:
+    handler: ServerlessAssembly::ServerlessFunctions.DeleteMemberFunction::Handle
+    events:
+      - http:
+          path: members
+          method: delete
+          cors: true          
