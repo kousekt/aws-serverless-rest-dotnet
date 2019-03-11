@@ -2,4 +2,4 @@
 
 ## AWS Serverless rest example in dotnet
 
-[The serverless framework](https://serverless.com/)
+<a href="https://serverless.com/" target=_blank>The Serverless Framework</a>
